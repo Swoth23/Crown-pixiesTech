@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - E-Commerce Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        .checkout-btn {
+            background-color: #004aad;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Checkout</h1>
+    </header>
+
+    <div class="container">
+        <h2>Order Summary</h2>
+        <div id="order-summary">
+            <!-- Cart items will be displayed here -->
+        </div>
+
+        <button class="checkout-btn">Confirm and Pay</button>
+    </div>
+
+    <script>
+        function loadOrderSummary() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const orderSummaryContainer = document.getElementById('order-summary');
+            let total = 0;
+
+            orderSummaryContainer.innerHTML = '';
+
+            cartItems.forEach(item => {
+                const totalForItem = item.price * item.quantity;
+                total += totalForItem;
+
+                const itemSummary = document.createElement('p');
+                itemSummary.textContent = `${item.name} (x${item.quantity}) - $${totalForItem.toFixed(2)}`;
+                orderSummaryContainer.appendChild(itemSummary);
+            });
+
+            const totalSummary = document.createElement('p');
+            totalSummary.textContent = `Total: $${total.toFixed(2)}`;
+            orderSummaryContainer.appendChild(totalSummary);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadOrderSummary);
+    </script>
+
+</body>
+</html>

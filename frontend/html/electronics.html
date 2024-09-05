@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elecronics page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/trail.css">
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <img src="/imgs/logo/cpt_img.png" alt="Website Logo">
+            <h1>Cpt</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#profile">Profile</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search products...">
+            <button id="search-btn">Search</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-text">
+            <h1>Welcome to Crownpixies Tech Elecronics </h1>
+            <p>Find the best gadgets, games, and software services!</p>
+            <a href="#shop" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="shop">
+        <h2>Featured Products</h2>
+        <div class="product-grid" id="product-grid">
+            <!-- Products will be injected here by JavaScript -->
+
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="/imgs/services/web_design_&_development/sample1.jpeg" alt="Web Design">
+                <h3>Web Design & Development</h3>
+                <p>Creating responsive, modern websites.</p>
+                <a href="#" class="btn">Order Now</a>
+            </div>
+            <div class="product">
+                <img src="/imgs/services/game_development/mobilegame.jpeg" alt="Game Development">
+                <h3>Game Development</h3>
+                <p>Building engaging and immersive games.</p>
+                <a href="#" class="btn">Order Now</a>
+            </div>
+            <div class="product">
+                <img src="app-development.jpg" alt="App Development">
+                <h3>App Development</h3>
+                <p>Custom mobile applications for all platforms.</p>
+                <a href="#" class="btn">Order Now</a>
+            </div>
+            <div class="product">
+                <img src="graphic-design.jpg" alt="Graphic Design">
+                <h3>Graphic Design</h3>
+                <p>High-quality graphics for all your needs.</p>
+                <a href="#" class="btn">Order Now</a>
+            </div>
+        </div>
+    </section>
+    <!-- Same as before -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>We offer the best products and services to meet all your digital needs.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Email:  <a href="mailto:pixiesltd19@gmail.com"> pixiesltd19@gmail.com</a></li>
+                    <li>Phone: <a href="tel:+2348107485087"> +234 810 748 5087</a></li>
+                    <li>Address: <address>Kalemie Street Wuse zone 6 Abuja Nigeria</address></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul class="social-links">
+                    <li><a href="#"> <img width="48" height="48" src="https://img.icons8.com/fluency/48/facebook-new.png" alt="facebook-new"/> Facebook</a></li>
+                    <li><a href="#"> <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/twitterx--v1.png" alt="twitterx--v1"/> Twitter X</a></li>
+                    <li><a href="#"> <img width="48" height="48" src="https://img.icons8.com/color/48/instagram-new.png" alt="instagram-new"/> Instagram</a></li>
+                    <li><a href="#">  Youtube </a></li>
+                    <li><a href="#">  TikTok</a></li>
+                    <li><a href="#"> <img width="48" height="48" src="https://img.icons8.com/color/48/fiverr.png" alt="fiverr"/> Fiverr</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Your Cptech. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Same as before -->
+
+    <script>
+        // Handle header background color change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // JavaScript to handle adding items to the cart
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const productName = this.getAttribute('data-name');
+                    const productPrice = parseFloat(this.getAttribute('data-price'));
+                    const productImage = this.getAttribute('data-image');
+
+                    const product = {
+                        name: productName,
+                        price: productPrice,
+                        image: productImage,
+                        quantity: 1
+                    };
+
+                    const productInCart = cart.find(item => item.name === product.name);
+                    if (productInCart) {
+                        productInCart.quantity += 1;
+                    } else {
+                        cart.push(product);
+                    }
+
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    alert(`${productName} has been added to your cart.`);
+                });
+            });
+        });
+
+        // Product data and display logic
+        const products = [
+            { name: 'Samsung (A15)', price: 450.99, image: '/imgs/phones/Samsung/A-series/A15/1.jpg' },
+            { name: 'Laptop (Acer)', price: 899.99, image: '/imgs/PC/laptop/Acer/game.jpeg' },
+            { name: 'Game Console', price: 399.99, image: 'game-console.jpg' },
+            { name: 'Latest Movie', price: 19.99, image: '/imgs/videos/RIPD.jpg' } ,
+            { name: 'Samsung (A05)', price: 499.99, image: '/imgs/phones/Samsung/A-series/A05/2.jpg' },
+            { name: 'MacBook (Air 13)', price: 899.99, image: '/imgs/PC/laptop/MacBook_Air_13_in_M3_Midnight_PDP_Image_Position_1__WWEN_5000x.webp' },
+            { name: 'Game Console', price: 299.99, image: 'game-console.jpg' },
+            { name: 'Latest Movie', price: 19.99, image: '/imgs/videos/RIPD.jpg' }
+
+
+            ];
+
+        function displayProducts(products) {
+            const productGrid = document.getElementById('product-grid');
+            productGrid.innerHTML = '';
+
+            products.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+                productDiv.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>$${product.price.toFixed(2)}</p>
+                    <a href="/frontend/html/cart.html" class="btn add-to-cart" data-name="${product.name}" data-price="${product.price}" data-image="${product.image}">Add to Cart</a>
+                `;
+                productGrid.appendChild(productDiv);
+            });
+        }
+
+        function searchProducts(query) {
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(query.toLowerCase())
+            );
+            displayProducts(filteredProducts);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            displayProducts(products);
+
+            document.getElementById('search-btn').addEventListener('click', function() {
+                const query = document.getElementById('search-input').value;
+                searchProducts(query);
+            });
+
+            document.getElementById('search-input').addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    const query = document.getElementById('search-input').value;
+                    searchProducts(query);
+                }
+            });
+        });
+    </script>
+
+    <script src="/frontend/javascript/cartadd.js"></script>
+</body>
+
+</html>

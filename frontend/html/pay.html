@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment</title>
+    <link rel="stylesheet" href="/frontend/css/pay.css">
+</head>
+<body>
+    <div class="payment-container">
+        <h1>Secure Payment</h1>
+        <p>Select your preferred payment method below.</p>
+
+        <!-- Payment Methods Section -->
+        <div class="payment-methods">
+            <!-- Credit/Debit Card -->
+            <div class="payment-option" id="credit-card">
+                <div class="icon-container">
+                  <img width="48" height="48" src="https://img.icons8.com/color/48/mastercard.png" alt="mastercard"/>
+                  <img width="48" height="48" src="https://img.icons8.com/color/48/visa.png" alt="visa"/>
+                  <img width="48" height="48" src="https://img.icons8.com/color/48/amex.png" alt="amex"/>
+                </div>
+                <h2>Credit/Debit Card</h2>
+                <form id="card-form">
+                    <input type="text" placeholder="Cardholder Name" required>
+                    <input type="text" placeholder="Card Number" required>
+                    <div class="card-details">
+                        <input type="text" placeholder="MM/YY" required>
+                        <input type="text" placeholder="CVC" required>
+                    </div>
+                    <button type="submit" class="btn pay-btn">Pay with Card</button>
+                </form>
+            </div>
+
+            <!-- PayPal -->
+            <div class="payment-option" id="paypal">
+                <div class="icon-container">
+                  <img width="24" height="24" src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/24/external-paypal-an-american-company-operating-a-worldwide-online-payments-system-logo-color-tal-revivo.png" alt="Paypal Icon"/>
+                </div>
+                <h2>PayPal</h2>
+                <button id="paypal-button" class="btn">Pay with PayPal</button>
+            </div>
+
+            <!-- Paystack -->
+            <div class="payment-option" id="paystack">
+                <div class="icon-container">
+                    <img src="paystack-icon.png" alt="Paystack Icon">
+                </div>
+                <h2>Paystack</h2>
+                <button id="paystack-button" class="btn">Pay with Paystack</button>
+            </div>
+
+            <!-- Flutterwave -->
+            <div class="payment-option" id="flutterwave">
+                <div class="icon-container">
+                    <img src="flutterwave-icon.png" alt="Flutterwave Icon">
+                </div>
+                <h2>Flutterwave</h2>
+                <button id="flutterwave-button" class="btn">Pay with Flutterwave</button>
+            </div>
+
+            <!-- Bank Transfer -->
+            <div class="payment-option" id="bank-transfer">
+                <div class="icon-container">
+                    <img src="bank-icon.png" alt="Bank Icon">
+                </div>
+                <h2>Bank Transfer</h2>
+                <p>Transfer to: <strong>Account Name</strong>, <strong>Bank Name</strong>, <strong>Account Number</strong></p>
+                <button id="bank-transfer-button" class="btn">Complete Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

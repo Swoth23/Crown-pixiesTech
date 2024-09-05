@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trailer</title>
+    
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Your E-Commerce Store</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-text">
+            <h1>Welcome to Your Store</h1>
+            <p>Find the best gadgets, games, and software services!</p>
+            <a href="#shop" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Slideshow Section -->
+    <div class="slideshow-container">
+        <div class="slide active-slide">
+            <img src="/imgs/phones/Samsung/A-series/A15/1.jpg" alt="Smartphone">
+        </div>
+        <div class="slide">
+            <img src="/imgs/PC/laptop/Acer/game.jpeg" alt="Laptop">
+        </div>
+        <div class="slide">
+            <img src="game-console.jpg" alt="Game Console">
+        </div>
+        <div class="slide">
+            <img src="movie.jpg" alt="Latest Movie">
+        </div>
+    </div>
+
+    <!-- Featured Products Section -->
+    <section id="shop">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="/imgs/phones/Samsung/A-series/A15/1.jpg" alt="Smartphone">
+                <h3>Smartphone</h3>
+                <p>$499.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+            <div class="product">
+                <img src="/imgs/PC/laptop/Acer/game.jpeg" alt="Laptop">
+                <h3>Laptop</h3>
+                <p>$899.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+            <div class="product">
+                <img src="game-console.jpg" alt="Game Console">
+                <h3>Game Console</h3>
+                <p>$299.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+            <div class="product">
+                <img src="/imgs/videos/RIPD.jpg" alt="Movie">
+                <h3>Latest Movie</h3>
+                <p>$19.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="web-design.jpg" alt="Web Design">
+                <h3>Web Design & Development</h3>
+                <p>Creating responsive, modern websites.</p>
+                <a href="#" class="btn">Order Now</a>
+            </div>
+            <div class="product">
+                <img src="game-development.jpg" alt="Game Development">
+                <h3>Game Development</h3>
+                <p>Building engaging and immersive games.</p>
+                <a href="#" class="btn">Order Now</a>
+            </div>
+            <div class="product">
+                <img src="app-development.jpg" alt="App Development">
+                <h3>App Development</h3>
+                <p>Custom mobile applications for all platforms.</p>
+                <a href="#" class="btn">Order Now</a>
+            </div>
+            <div class="product">
+                <img src="graphic-design.jpg" alt="Graphic Design">
+                <h3>Graphic Design</h3>
+                <p>High-quality graphics for all your needs.</p>
+                <a href="#" class="btn">Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>We offer the best products and services to meet all your digital needs.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Email: contact@yourstore.com</li>
+                    <li>Phone: +123 456 7890</li>
+                    <li>Address: 123 Digital Street, Tech City</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul class="social-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Your E-Commerce Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Slideshow functionality
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlides() {
+            slides.forEach((slide, index) => {
+                slide.style.display = 'none';
+            });
+
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            slides[slideIndex - 1].style.display = 'block';
+            setTimeout(showSlides, 3000); // Change slide every 3 seconds
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlides();
+        });
+    </script>
+</body>
+
+</html>

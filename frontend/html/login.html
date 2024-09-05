@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crownpixies tech</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Crownpixies tech</h2>
+        <form id="loginForm" onsubmit="return validateForm()">
+
+            <div class="form-group">
+                <label for="name">UserName/ Email:</label>
+                <input type="text" id="username/email" name="username/email" required>
+            </div>
+
+
+ 
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="role">I am a:</label>
+                <select id="role" name="role" required>
+                    <option value="">Select Role</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="patient">Patient</option>
+                </select>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script>
+        
+
+function validateForm() {
+ 
+    var username = document.getElementById("username/email").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    
+
+    if ( email =="" || password == "" || role == ""|| username == "") {
+        alert("All field must be filled out ");
+        return false;
+    }
+
+    //You can add more validation logic here if needed
+
+    alert("Login Successful");
+
+}
+    </script>
+</body>
+</html>

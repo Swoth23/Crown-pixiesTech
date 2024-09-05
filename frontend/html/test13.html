@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your E-Commerce Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/trail.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Your E-Commerce Store</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-text">
+            <h1>Welcome to Your Store</h1>
+            <p>Find the best gadgets, games, and software services!</p>
+            <a href="#shop" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="shop">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="/imgs/phones/Samsung/A-series/A15/1.jpg" alt="Smartphone">
+                <h3>Smartphone</h3>
+                <p>$499.99</p>
+                <a href="#" class="btn add-to-cart" data-name="Smartphone" data-price="499.99" data-image="/imgs/phones/Samsung/A-series/A15/1.jpg">Add to Cart</a>
+            </div>
+            <div class="product">
+                <img src="/imgs/PC/laptop/Acer/game.jpeg" alt="Laptop">
+                <h3>Laptop</h3>
+                <p>$899.99</p>
+                <a href="#" class="btn add-to-cart" data-name="Laptop" data-price="899.99" data-image="/imgs/PC/laptop/Acer/game.jpeg">Add to Cart</a>
+            </div>
+            <div class="product">
+                <img src="game-console.jpg" alt="Game Console">
+                <h3>Game Console</h3>
+                <p>$299.99</p>
+                <a href="#" class="btn add-to-cart" data-name="Game Console" data-price="299.99" data-image="game-console.jpg">Add to Cart</a>
+            </div>
+            <div class="product">
+                <img src="/imgs/videos/RIPD.jpg" alt="Latest Movie">
+                <h3>Latest Movie</h3>
+                <p>$19.99</p>
+                <a href="#" class="btn add-to-cart" data-name="Latest Movie" data-price="19.99" data-image="/imgs/videos/RIPD.jpg">Add to Cart</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <!-- Same as before -->
+
+    <!-- Footer -->
+    <!-- Same as before -->
+
+    <script>
+        // JavaScript to handle adding items to the cart
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const productName = this.getAttribute('data-name');
+                    const productPrice = parseFloat(this.getAttribute('data-price'));
+                    const productImage = this.getAttribute('data-image');
+
+                    const product = {
+                        name: productName,
+                        price: productPrice,
+                        image: productImage,
+                        quantity: 1
+                    };
+
+                    const productInCart = cart.find(item => item.name === product.name);
+                    if (productInCart) {
+                        productInCart.quantity += 1;
+                    } else {
+                        cart.push(product);
+                    }
+
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    alert(`${productName} has been added to your cart.`);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
